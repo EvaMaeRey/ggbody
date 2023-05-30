@@ -5,7 +5,7 @@
 \title{Title}
 \usage{
 stamp_dk_brain(
-  mapping = NULL,
+  mapping = aes(fill = NULL, color = NULL, region = NULL),
   data = dk_reference,
   position = "identity",
   na.rm = FALSE,
@@ -25,7 +25,7 @@ library(ggplot2)
 library(tidyverse)
  ggplot() +
  stamp_dk_brain(alpha = .5, fill = "blue") +
-stamp_dk_brain(hemi = "left", fill = "black") +
+ stamp_dk_brain(hemi = "left", fill = "black") +
  stamp_dk_brain(side = "lateral", hemi = "right", fill = "green") +
  stamp_dk_brain(region = "insula", fill = "pink")
 

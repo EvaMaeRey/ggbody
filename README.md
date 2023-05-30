@@ -10,12 +10,14 @@
 ggbody uses corporal atlases (curated in fantastic packages like ggseg
 and gganatogram) and experiments with APIs like those in ggfips (us
 counties) and ggnc (north carolina). That is, position aesthetic is
-allowed which will join up the atlas polygons in the background via the
-ggplot compute mechanisms. This allows flat files without region
-perimeter information to be used as the data frame input. In addition,
-there are stamp functions which allow geometries to be accessed without
-referring to any dataframe at all, but by the name of the region (or
-meta or sub region).
+specified (lobe/seg/tissue) via an aes(region = .) call, which will join
+up the atlas polygons in the background via the ggplot compute
+mechanisms. This allows flat files without region perimeter information
+to be used as the data frame input.
+
+In addition, there are stamp functions which allow geometries to be
+accessed without referring to any dataframe at all, but by the name of
+the region (or meta or sub region).
 
 ## Installation
 
@@ -64,7 +66,7 @@ dk_flat %>%
   mutate(id = row_number()) %>% 
  ggplot() +
  aes(region = region, fill = id) +
- stamp_dk_brain(aes(region = NULL, fill = NULL)) + # nulling out work around needs to be addressed
+ stamp_dk_brain() + 
  geom_dk_brain(alpha = .5)
 #> Joining with `by = join_by(region)`
 ```

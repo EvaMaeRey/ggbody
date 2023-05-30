@@ -39,17 +39,22 @@ StatBdksegstamp <- ggplot2::ggproto(`_class` = "StatBdksegstamp",
 #' library(tidyverse)
 #'  ggplot() +
 #'  stamp_dk_brain(alpha = .5, fill = "blue") +
-#' stamp_dk_brain(hemi = "left", fill = "black") +
+#'  stamp_dk_brain(hemi = "left", fill = "black") +
 #'  stamp_dk_brain(side = "lateral", hemi = "right", fill = "green") +
 #'  stamp_dk_brain(region = "insula", fill = "pink")
 #'
 stamp_dk_brain <- function(
-  mapping = NULL,
+  mapping = aes(fill = NULL, color = NULL, region = NULL),
   data = dk_reference,
   position = "identity",
   na.rm = FALSE,
   show.legend = NA,
-  inherit.aes = TRUE, ...) {
+  inherit.aes = TRUE,
+  # mapping = aes(fill = NULL, color = NULL, region = NULL),
+  # fill = "grey85",
+  # color = "black",
+  # region = NULL,
+  ...) {
   c(ggplot2::layer(
     stat = StatBdksegstamp,  # proto object from step 2
     geom = ggplot2::GeomSf,  # inherit other behavior
