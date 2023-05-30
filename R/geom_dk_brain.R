@@ -40,8 +40,8 @@ StatBdkseg <- ggplot2::ggproto(`_class` = "StatBdkseg",
 #'  geom_sf(data = ggseg::dk$data,
 #'          aes(region = NULL, fill = NULL) # huh?  required?
 #'  ) +
-#'  geom_sf_brainsegs(alpha = .5)
-geom_sf_brainsegs <- function(
+#'  geom_dk_brain(alpha = .5)
+geom_dk_brain <- function(
   mapping = NULL,
   data = NULL,
   position = "identity",

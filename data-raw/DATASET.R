@@ -26,6 +26,11 @@ last_plot() %>% layer_data() %>%
   filter(!is.na(label)) ->
 dk_reference
 
+dk_reference %>%
+  select(hemi, side, region, label, roi) ->
+dk_flat
+
 usethis::use_data(dk_reference, overwrite = TRUE)
 
+usethis::use_data(dk_flat, overwrite = TRUE)
 

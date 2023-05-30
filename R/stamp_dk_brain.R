@@ -7,8 +7,6 @@ compute_brain_dk_stamp <- function(data, scales, hemi = NULL, side = NULL, regio
     rename(Region = region) ->
    mod
 
-
-
   if(!is.null(hemi)){mod <- mod %>% filter(Hemi %in% hemi)}
   if(!is.null(side)){mod <- mod %>% filter(Side %in% side)}
   if(!is.null(region)){mod <- mod %>% filter(Region %in% region)}
@@ -40,12 +38,12 @@ StatBdksegstamp <- ggplot2::ggproto(`_class` = "StatBdksegstamp",
 #' library(ggplot2)
 #' library(tidyverse)
 #'  ggplot() +
-#'  stamp_sf_brainsegs(alpha = .5, fill = "blue") +
-#' stamp_sf_brainsegs(hemi = "left", fill = "black") +
-#'  stamp_sf_brainsegs(side = "lateral", hemi = "right", fill = "green") +
-#'  stamp_sf_brainsegs(region = "insula", fill = "pink")
+#'  stamp_dk_brain(alpha = .5, fill = "blue") +
+#' stamp_dk_brain(hemi = "left", fill = "black") +
+#'  stamp_dk_brain(side = "lateral", hemi = "right", fill = "green") +
+#'  stamp_dk_brain(region = "insula", fill = "pink")
 #'
-stamp_sf_brainsegs <- function(
+stamp_dk_brain <- function(
   mapping = NULL,
   data = dk_reference,
   position = "identity",
@@ -64,6 +62,88 @@ stamp_sf_brainsegs <- function(
     coord_sf(default = TRUE)  )
 }
 
+
+
+
+#' Title
+#'
+#' @param side
+#' @param region
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#' ggplot() +
+#' stamp_dk_hemi_left()
+stamp_dk_hemi_left <- function(side = NULL, region = NULL, ...) {
+
+  stamp_dk_brain(hemi = "left", side = side, region = region, ...)
+
+
+}
+
+#' Title
+#'
+#' @param side
+#' @param region
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#' ggplot() +
+#' stamp_dk_hemi_right()
+stamp_dk_hemi_right <- function(side = NULL, region = NULL, ...) {
+
+  stamp_dk_brain(hemi = "right", side = side, region = region, ...)
+
+
+}
+
+#' Title
+#'
+#' @param side
+#' @param region
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#' ggplot() +
+#' stamp_dk_side_lateral()
+stamp_dk_side_lateral <- function(hemi = NULL, region = NULL, ...) {
+
+  stamp_dk_brain(hemi = hemi, side = 'lateral', region = region, ...)
+
+
+}
+
+#' Title
+#'
+#' @param side
+#' @param region
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#' ggplot() +
+#' stamp_dk_side_medial()
+stamp_dk_side_medial <- function(hemi = NULL, region = NULL, ...) {
+
+  stamp_dk_brain(hemi = hemi, side = 'medial', region = region, ...)
+
+
+}
 
 
 
